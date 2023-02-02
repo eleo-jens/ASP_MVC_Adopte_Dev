@@ -1,3 +1,8 @@
+using Common.Repositories;
+using DO = DAL.Entities;
+using DS = DAL.Services;
+using BO = BLL.Entities;
+using BS = BLL.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +28,9 @@ namespace MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+
+            services.AddScoped<IDeveloperRepository<DO.Developer, int>, DS.DeveloperService>();
+            services.AddScoped<IDeveloperRepository<BO.Developer, int>, BS.DeveloperService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
