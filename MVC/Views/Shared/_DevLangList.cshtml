@@ -1,0 +1,10 @@
+﻿@using BLL.Entities;
+@model IEnumerable<DevLang>
+
+<ul>
+    @foreach (var item in Model)
+    {
+    <li>Langue: @item.itLang.ITLabel</li>
+    <li>Depuis: @item.since</li>
+    }
+</ul>

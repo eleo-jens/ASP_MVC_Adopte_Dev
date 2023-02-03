@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -38,5 +39,8 @@ namespace MVC.Models.DeveloperViewModels
 
         [DisplayName("Catégorie principale: ")]
         public string DevCategPrincipal { get; set; }
+
+        [DisplayName("Langues connues: ")]
+        public IEnumerable<DevLang> devlangs { get; set; }
     }
 }

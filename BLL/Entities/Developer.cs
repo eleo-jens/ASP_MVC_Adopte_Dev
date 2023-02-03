@@ -20,5 +20,7 @@ namespace BLL.Entities
         public double DevMonthCost { get; set; }
         public string DevMail { get; set; }
         public string DevCategPrincipal { get; set; }
+
+        public IEnumerable<DevLang> devlangs { get; set; }
     }
 }

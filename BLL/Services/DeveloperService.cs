@@ -11,10 +11,12 @@ namespace BLL.Services
 {
     public class DeveloperService : IDeveloperRepository<Developer, int>
     {
-        private IDeveloperRepository<DAL.Entities.Developer, int> _repository;
-        public DeveloperService(IDeveloperRepository<DAL.Entities.Developer, int> repository)
+        private readonly IDeveloperRepository<DAL.Entities.Developer, int> _repository;
+        private readonly IDevLangRepository<DevLang, int> _repodevlang;
+        public DeveloperService(IDeveloperRepository<DAL.Entities.Developer, int> repository, IDevLangRepository<DevLang, int> repodevlang)
         {
             _repository = repository;
+            _repodevlang = repodevlang;
         }
         public IEnumerable<Developer> Get()
         {
@@ -23,7 +25,9 @@ namespace BLL.Services
 
         public Developer Get(int id)
         {
-            return _repository.Get(id).ToBLL();
+            Developer entity = _repository.Get(id).ToBLL();
+            entity.devlangs = _repodevlang.Get(id);
+            return entity;
         }
 
         public int Insert(Developer entity)

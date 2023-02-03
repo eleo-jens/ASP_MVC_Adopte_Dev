@@ -49,5 +49,32 @@ namespace BLL.Mapper
             };
         }
         #endregion
+
+        #region ITLang
+
+        public static BO.ITLang ToBLL(this DO.ITLang entity)
+        {
+            if (entity is null) return null;
+            return new BO.ITLang()
+            {
+                idIT = entity.idIT,
+                ITLabel = entity.ITLabel
+            };
+        }
+        #endregion
+
+        #region DevLang
+
+        public static BO.DevLang ToBLL(this DO.DevLang entity)
+        {
+            if (entity is null) return null;
+            return new BO.DevLang()
+            {
+                idDev = entity.idDev,
+                idIT = entity.idIT,
+                since = entity.since
+            }; 
+        }
+        #endregion
     }
 }

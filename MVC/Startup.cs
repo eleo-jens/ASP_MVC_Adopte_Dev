@@ -31,6 +31,12 @@ namespace MVC
 
             services.AddScoped<IDeveloperRepository<DO.Developer, int>, DS.DeveloperService>();
             services.AddScoped<IDeveloperRepository<BO.Developer, int>, BS.DeveloperService>();
+
+            services.AddScoped<IITLangRepository<DO.ITLang, int>, DS.ITLangService>();
+            services.AddScoped<IITLangRepository<BO.ITLang, int>, BS.ITLangService>();
+
+            services.AddScoped<IDevLangRepository<DO.DevLang, int>, DS.DevLangService>();
+            services.AddScoped<IDevLangRepository<BO.DevLang, int>, BS.DevLangService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

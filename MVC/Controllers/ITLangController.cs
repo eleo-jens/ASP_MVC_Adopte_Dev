@@ -3,7 +3,7 @@ using Common.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using MVC.Handlers;
-using MVC.Models.DeveloperViewModels;
+using MVC.Models.ITLangViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,55 +11,56 @@ using System.Threading.Tasks;
 
 namespace MVC.Controllers
 {
-    public class DeveloperController : Controller
+    public class ITLangController : Controller
     {
-        private readonly IDeveloperRepository<Developer, int> _service;
-        public DeveloperController(IDeveloperRepository<Developer,int> service)
+        private readonly IITLangRepository<ITLang, int> _service;
+        public ITLangController(IITLangRepository<ITLang, int> service)
         {
             _service = service;
         }
-        // GET: DeveloperControllers
+
+        // GET: ITLangController
         public ActionResult Index()
         {
-            IEnumerable<DeveloperListItem> model = _service.Get().Select(e => e.ToListItem());
+            IEnumerable<ITLangListItem> model = _service.Get().Select(e => e.ToListItem());
             return View(model);
         }
 
-        // GET: DeveloperController/Details/5
+        // GET: ITLangController/Details/5
         public ActionResult Details(int id)
         {
-            DeveloperDetails model = _service.Get(id).ToDetails();
-            if (model is null)
-            {
-                TempData["Error"] = "Spectacle inexistant...";
-                return RedirectToAction("Index");
-            }
+            ITLangDetails model = _service.Get(id).ToDetails();
             return View(model);
         }
 
-        // GET: DeveloperController/Create
+        // GET: ITLangController/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: DeveloperController/Create
+        // POST: ITLangController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(DeveloperCreateForm form)
+        public ActionResult Create(IFormCollection collection)
         {
-            if (!ModelState.IsValid) return View(form);
-            int id = _service.Insert(form.ToBLL());
-            return RedirectToAction("Index", new { id = id });
+            try
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
-        // GET: DeveloperController/Edit/5
+        // GET: ITLangController/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: DeveloperController/Edit/5
+        // POST: ITLangController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -74,13 +75,13 @@ namespace MVC.Controllers
             }
         }
 
-        // GET: DeveloperController/Delete/5
+        // GET: ITLangController/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: DeveloperController/Delete/5
+        // POST: ITLangController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Common.Repositories
+namespace Common.Entities
 {
-    public interface TDeleteRepository<TEntity, TId>
+    public interface IITLang
     {
-        bool Delete(TId id);
     }
 }

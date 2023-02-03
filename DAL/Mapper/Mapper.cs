@@ -31,5 +31,31 @@ namespace DAL.Mapper
         }
 
         #endregion
+
+        #region ITLang
+
+        public static ITLang ToITLang(this IDataRecord record)
+        {
+            if (record is null) return null;
+            return new ITLang()
+            {
+                idIT = (int)record[nameof(ITLang.idIT)],
+                ITLabel = (string)record[nameof(ITLang.ITLabel)]
+            };
+        }
+        #endregion
+
+        #region DevLang
+        public static DevLang ToDevLang(this IDataRecord record)
+        {
+            if (record is null) return null;
+            return new DevLang()
+            {
+                idDev = (int)record[nameof(DevLang.idDev)],
+                idIT = (int)record[nameof(DevLang.idIT)],
+                since = (record[nameof(DevLang.since)] is DBNull) ? null : (DateTime)record[nameof(DevLang.since)]
+            };
+        }
+        #endregion
     }
 }
