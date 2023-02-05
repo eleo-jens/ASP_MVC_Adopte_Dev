@@ -57,5 +57,16 @@ namespace DAL.Mapper
             };
         }
         #endregion
+
+        #region Categories
+        public static Categories ToCategories(this IDataRecord record{
+            if (record is null) return null;
+            return new Categories()
+            {
+                idCategory = (int)record[nameof(Categories.idCategory)],
+                CategLabel = (string)record[nameof(Categories.CategLabel)]
+            };
+        }
+        #endregion
     }
 }

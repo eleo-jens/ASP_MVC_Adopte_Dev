@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BLL.Entities;
 
 namespace BLL.Services
 {
@@ -29,6 +30,11 @@ namespace BLL.Services
         public BO.ITLang Get(int id)
         {
             return _repository.Get(id).ToBLL();
+        }
+
+        public IEnumerable<ITLang> GetByCategory(int id)
+        {
+            return _repository.GetByCategory(id).Select(e => e.ToBLL()); 
         }
     }
 }
