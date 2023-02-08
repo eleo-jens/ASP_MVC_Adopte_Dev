@@ -18,13 +18,40 @@ namespace DAL.Services
 
         }
 
-        public IEnumerable<Categories> GetAll()
+        // Get Categorie By int id(DevCategPrincipal)
+        public Categories Get(int id)
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                using (SqlCommand command = connection.CreateCommand())
+                {
+                    command.CommandText = @"SELECT idCategory, CategLabel FROM Categories 
+                                            WHERE idCategory = @id";
+
+                    command.Parameters.AddWithValue("id", id);
+
+                    connection.Open(); 
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return reader.ToCategories(); 
+                        }
+                        return null; 
+                    }
+                }
+            }
+        }
+
+        public IEnumerable<Categories> Get()
         {
                 using (SqlConnection connection = new SqlConnection(_connectionString))
                 {
                     using (SqlCommand command = connection.CreateCommand())
                     {
                         command.CommandText = "SELECT [idCategory], [CategLabel] FROM [Categories]";
+
                         connection.Open();
 
                         using (SqlDataReader reader = command.ExecuteReader())
@@ -45,7 +72,16 @@ namespace DAL.Services
             {
                 using (SqlCommand command = connection.CreateCommand())
                 {
-                    command.CommandText = @"";
+                    command.CommandText = 
+                        @"SELECT DISTINCTCategories.CategLabel,Categories.idCategory
+                            FROM LangCateg
+                            JOIN DevLang
+                            ON Devlang.idIT = LangCateg.idIT
+                            JOIN Categories
+                            ON Categories.idCategory = LangCateg.idCategory
+                            WHERE idDev = @id";
+
+                    command.Parameters.AddWithValue("idDev", id); 
 
                     connection.Open(); 
 

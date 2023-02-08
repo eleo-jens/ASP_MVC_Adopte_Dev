@@ -13,10 +13,12 @@ namespace BLL.Services
     {
         private readonly IDeveloperRepository<DAL.Entities.Developer, int> _repository;
         private readonly IDevLangRepository<DevLang, int> _repodevlang;
-        public DeveloperService(IDeveloperRepository<DAL.Entities.Developer, int> repository, IDevLangRepository<DevLang, int> repodevlang)
+        private readonly ICategoriesRepository<Categories, int> _repocategories; 
+        public DeveloperService(IDeveloperRepository<DAL.Entities.Developer, int> repository, IDevLangRepository<DevLang, int> repodevlang, ICategoriesRepository<Categories, int> repocategories)
         {
             _repository = repository;
             _repodevlang = repodevlang;
+            _repocategories = repocategories; 
         }
         public IEnumerable<Developer> Get()
         {
@@ -26,7 +28,8 @@ namespace BLL.Services
         public Developer Get(int id)
         {
             Developer entity = _repository.Get(id).ToBLL();
-            entity.devlangs = _repodevlang.Get(id);
+            entity.Devlangs = _repodevlang.Get(id);
+            entity.CategoriePrincipale = _repocategories.Get(int.Parse(entity.DevCategPrincipal)); 
             return entity;
         }
 

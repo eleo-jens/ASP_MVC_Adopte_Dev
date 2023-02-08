@@ -1,8 +1,32 @@
-﻿@{
+﻿@model MVC.Models.HomeViewModels.IndexViewModel
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+
+                    <h2>Category</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        <partial name="_CategoriesList" for="categories" />
+                    </div>
+
+                    <div class="brands_products">
+                        <h2>Programming languages</h2>
+                        <div class="brands-name">
+                            <partial name="_ITLangList" for="langues" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-9 padding-right">
+                <partial name="_DeveloperList" for="developers" />
+            </div>
+        </div>
+    </div>
+</section>

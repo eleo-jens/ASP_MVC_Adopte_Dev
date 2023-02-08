@@ -40,7 +40,7 @@ namespace MVC.Handlers
                 DevMonthCost = entity.DevMonthCost,
                 DevMail = entity.DevMail,
                 DevCategPrincipal = entity.DevCategPrincipal,
-                devlangs = entity.devlangs
+                Devlangs = entity.Devlangs
             };
         }
 

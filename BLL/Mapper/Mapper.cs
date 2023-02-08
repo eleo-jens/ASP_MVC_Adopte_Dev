@@ -26,7 +26,9 @@ namespace BLL.Mapper
                 DevHourCost = entity.DevHourCost,
                 DevMonthCost = entity.DevMonthCost,
                 DevMail = entity.DevMail,
-                DevCategPrincipal = entity.DevCategPrincipal
+                DevCategPrincipal = entity.DevCategPrincipal,
+                Devlangs = null, 
+                CategoriePrincipale = null
             };
         }
 
@@ -73,6 +75,17 @@ namespace BLL.Mapper
                 idDev = entity.idDev,
                 idIT = entity.idIT,
                 since = entity.since
+            }; 
+        }
+        #endregion
+
+        #region Categories
+        public static BO.Categories ToBLL(this DO.Categories entity) {
+            if (entity is null) return null;
+            return new BO.Categories()
+            {
+                idCategory = entity.idCategory,
+                CategLabel = entity.CategLabel
             }; 
         }
         #endregion

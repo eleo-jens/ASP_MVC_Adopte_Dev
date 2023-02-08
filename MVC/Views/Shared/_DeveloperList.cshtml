@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MVC.Models.DeveloperViewModels.DeveloperListItem>
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<div class="features_items">
+    <!--features_items-->
+    <h2 class="title text-center">Find a Developer</h2>
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="product-image-wrapper">
+                <div class="single-products">
+                    <div class="productinfo text-center">
+                        <img src="/assets/img/@Html.DisplayFor(modelItem => item.DevPicture)" alt="Profil picture" />
+                        <h2>@Html.DisplayFor(modelItem => item.DevHourCost) €/Hour</h2>
+                        <p>@Html.DisplayFor(modelItem => item.DevFirstName) @Html.DisplayFor(modelItem => item.DevName) - @Html.DisplayFor(modelItem => item.CategoriePrincipale.CategLabel)</p>
+                        <a asp-action="Details" asp-controller="Developer" asp-route-id="@item.idDev" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                    </div>
+                    <div class="product-overlay">
+                        <div class="overlay-content">
+                            <h2>@Html.DisplayFor(modelItem => item.DevHourCost) €/Hour</h2>
+                            <p>@Html.DisplayFor(modelItem => item.DevFirstName) @Html.DisplayFor(modelItem => item.DevName) - @Html.DisplayFor(modelItem => item.CategoriePrincipale.CategLabel)</p>
+                            <a asp-action="Details" asp-controller="Developer" asp-route-id="@item.idDev" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

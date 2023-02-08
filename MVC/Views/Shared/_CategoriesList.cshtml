@@ -1,0 +1,11 @@
+﻿@model IEnumerable<BLL.Entities.Categories>
+
+    @foreach (var item in Model)
+    {
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title"><a href="#" id-route-asp="@item.idCategory">@item.CategLabel</a></h4>
+            </div>
+        </div>
+    }
+

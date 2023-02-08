@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -28,5 +29,6 @@ namespace MVC.Models.DeveloperViewModels
 
         [DisplayName("Catégorie principale: ")]
         public string DevCategPrincipal { get; set; }
+        public Categories CategoriePrincipale { get; set; }
     }
 }

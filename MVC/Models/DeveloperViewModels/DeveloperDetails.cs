@@ -40,7 +40,9 @@ namespace MVC.Models.DeveloperViewModels
         [DisplayName("Catégorie principale: ")]
         public string DevCategPrincipal { get; set; }
 
-        [DisplayName("Langues connues: ")]
-        public IEnumerable<DevLang> devlangs { get; set; }
+        public Categories CategoriePrincipale { get; set; }
+
+        [DisplayName("Langues maitrisées: ")]
+        public IEnumerable<DevLang> Devlangs { get; set; }
     }
 }

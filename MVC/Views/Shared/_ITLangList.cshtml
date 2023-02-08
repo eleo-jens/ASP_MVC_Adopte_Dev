@@ -1,0 +1,9 @@
+﻿@model IEnumerable<MVC.Models.ITLangViewModels.ITLangListItem>
+
+<ul class="nav nav-pills nav-stacked">
+
+    @foreach (var item in Model){
+        <li><a asp-route-id="@item.idIT"> <span class="pull-right">(?)</span> @item.ITLabel</a></li>
+    }
+</ul>
+

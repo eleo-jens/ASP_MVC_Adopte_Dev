@@ -59,7 +59,7 @@ namespace DAL.Mapper
         #endregion
 
         #region Categories
-        public static Categories ToCategories(this IDataRecord record{
+        public static Categories ToCategories(this IDataRecord record){
             if (record is null) return null;
             return new Categories()
             {

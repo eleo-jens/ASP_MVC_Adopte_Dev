@@ -21,6 +21,8 @@ namespace BLL.Entities
         public string DevMail { get; set; }
         public string DevCategPrincipal { get; set; }
 
-        public IEnumerable<DevLang> devlangs { get; set; }
+        public Categories CategoriePrincipale { get; set; }
+
+        public IEnumerable<DevLang> Devlangs { get; set; }
     }
 }
