@@ -38,9 +38,7 @@ namespace MVC.Models.DeveloperViewModels
         public string DevMail { get; set; }
 
         [DisplayName("Catégorie principale: ")]
-        public string DevCategPrincipal { get; set; }
-
-        public Categories CategoriePrincipale { get; set; }
+        public string CategoriePrincipale { get; set; }
 
         [DisplayName("Langues maitrisées: ")]
         public IEnumerable<DevLang> Devlangs { get; set; }

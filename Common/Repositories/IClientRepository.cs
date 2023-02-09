@@ -1,0 +1,14 @@
+﻿using Common.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Common.Repositories
+{
+    public interface IClientRepository<TEntity, TId> : IAuthRepository, IInsertRepository<TEntity, TId> where TEntity : IClient
+    {
+        public TEntity Get(int id); 
+    }
+}

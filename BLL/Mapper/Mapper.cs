@@ -89,5 +89,38 @@ namespace BLL.Mapper
             }; 
         }
         #endregion
+
+        #region Client
+
+        public static BO.Client ToBLL(this DO.Client entity)
+        {
+            if (entity is null) return null;
+            return new BO.Client()
+            {
+                idClient = entity.idClient,
+                CliName = entity.CliName, 
+                CliFirstName = entity.CliFirstName, 
+                CliCompany = entity.CliCompany, 
+                CliMail = entity.CliMail, 
+                CliLogin = entity.CliLogin, 
+                CliPassword = entity.CliPassword
+            }; 
+        }
+
+        public static DO.Client ToDAL(this BO.Client entity)
+        {
+            if (entity is null) return null;
+            return new DO.Client()
+            {
+                idClient = entity.idClient,
+                CliName = entity.CliName,
+                CliFirstName = entity.CliFirstName,
+                CliCompany = entity.CliCompany,
+                CliMail = entity.CliMail,
+                CliLogin = entity.CliLogin,
+                CliPassword = entity.CliPassword
+            };
+        }
+        #endregion 
     }
 }

@@ -27,8 +27,10 @@ namespace MVC.Models.DeveloperViewModels
         [DataType(DataType.ImageUrl)]
         public string DevPicture { get; set; }
 
-        [DisplayName("Catégorie principale: ")]
+        [ScaffoldColumn(false)]
         public string DevCategPrincipal { get; set; }
-        public Categories CategoriePrincipale { get; set; }
+        
+        [DisplayName("Catégorie principale: ")]
+        public string CategoriePrincipale { get; set; }
     }
 }

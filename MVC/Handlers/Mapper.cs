@@ -1,4 +1,5 @@
 ﻿using BLL.Entities;
+using MVC.Models.ClientViewModels;
 using MVC.Models.DeveloperViewModels;
 using MVC.Models.ITLangViewModels;
 using System;
@@ -21,7 +22,7 @@ namespace MVC.Handlers
                 DevFirstName = entity.DevFirstName,
                 DevPicture = entity.DevPicture,
                 DevHourCost = entity.DevHourCost,
-                DevCategPrincipal = entity.DevCategPrincipal
+                CategoriePrincipale = entity.CategoriePrincipale.CategLabel
             };
         }
 
@@ -39,7 +40,7 @@ namespace MVC.Handlers
                 DevHourCost = entity.DevHourCost,
                 DevMonthCost = entity.DevMonthCost,
                 DevMail = entity.DevMail,
-                DevCategPrincipal = entity.DevCategPrincipal,
+                CategoriePrincipale = entity.CategoriePrincipale.CategLabel,
                 Devlangs = entity.Devlangs
             };
         }
@@ -84,5 +85,37 @@ namespace MVC.Handlers
             };
         }
         #endregion
+
+        #region Client
+
+        public static ClientDetails ToDetails(this Client entity)
+        {
+            if (entity is null) return null;
+            return new ClientDetails()
+            {
+                idClient = entity.idClient, 
+                CliName = entity.CliName, 
+                CliFirstName = entity.CliFirstName, 
+                CliCompany = entity.CliCompany, 
+                CliMail = entity.CliMail
+            };
+        }
+
+        public static Client ToBLL(this ClientCreateForm entity)
+        {
+            if (entity is null) return null;
+            return new Client()
+            {
+                idClient = default(int),
+                CliName = entity.CliName, 
+                CliFirstName = entity.CliFirstName, 
+                CliCompany = entity.CliCompany, 
+                CliMail = entity.CliMail, 
+                CliLogin = entity.CliLogin, 
+                CliPassword = entity.CliPassword
+            };
+        }
+        #endregion
+
     }
 }

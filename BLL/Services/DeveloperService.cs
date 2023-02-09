@@ -22,14 +22,37 @@ namespace BLL.Services
         }
         public IEnumerable<Developer> Get()
         {
-            return _repository.Get().Select(e => e.ToBLL());
+            IEnumerable<Developer> developers; 
+            developers = _repository.Get().Select(e => e.ToBLL());
+            developers = developers.Select(e =>
+            {
+                if (int.TryParse(e.DevCategPrincipal, out int id))
+                {
+                    e.CategoriePrincipale = _repocategories.Get(id); 
+                }
+                else
+                {
+                    e.CategoriePrincipale = new Categories() { CategLabel = e.DevCategPrincipal };
+                }
+
+                return e;
+            }); 
+            return developers; 
         }
 
         public Developer Get(int id)
         {
             Developer entity = _repository.Get(id).ToBLL();
             entity.Devlangs = _repodevlang.Get(id);
-            entity.CategoriePrincipale = _repocategories.Get(int.Parse(entity.DevCategPrincipal)); 
+            if (int.TryParse(entity.DevCategPrincipal, out int idCat))
+            {
+                entity.CategoriePrincipale = _repocategories.Get(idCat); 
+
+            }
+            else
+            {
+                entity.CategoriePrincipale = new Categories() { CategLabel = entity.DevCategPrincipal };
+            }
             return entity;
         }
 

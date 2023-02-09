@@ -68,5 +68,24 @@ namespace DAL.Mapper
             };
         }
         #endregion
+
+        #region Client
+
+        public static Client ToClient(this IDataRecord record)
+        {
+            if (record is null) return null;
+            return new Client()
+            {
+                idClient = (int)record[nameof(Client.idClient)],
+                CliName = (string)record[nameof(Client.CliName)],
+                CliFirstName = (string)record[nameof(Client.CliFirstName)],
+                CliMail = (string)record[nameof(Client.CliMail)],
+                CliCompany = (string)record[nameof(Client.CliCompany)],
+                CliLogin = (string)record[nameof(Client.CliLogin)],
+                CliPassword = "********" 
+            }; 
+        }
+
+        #endregion
     }
 }

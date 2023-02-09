@@ -20,24 +20,7 @@ namespace BLL.Entities
         public double DevMonthCost { get; set; }
         public string DevMail { get; set; }
         public string DevCategPrincipal { get; set; }
-
-        public Categories CategoriePrincipale
-        {
-            get { }
-
-            set
-            {
-                if (int.TryParse(this.DevCategPrincipal, out int id))
-                {
-                    this.CategoriePrincipale.idCategory = id;
-                }
-                else
-                {
-                    this.CategoriePrincipale = 
-                }
-            }
-        }
-
+        public Categories CategoriePrincipale { get; set; }
         public IEnumerable<DevLang> Devlangs { get; set; }
     }
 }
